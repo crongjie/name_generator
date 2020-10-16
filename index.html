@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
   crossorigin="anonymous"></script>
     <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel=stylesheet type="text/css" href="styles.css">
   </head>
   <body>
-    <button class="rng-text-size" onclick="generate()">生成する</button> 
+    <button class="btn btn-primary" onclick="generate()">生成する</button> 
     <br /><br />
     <p id="js-copyalert" class="copy_alert">コピーできました！</p>
     <div class="rng-text-size" id="name-list"></div>

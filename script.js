@@ -13,10 +13,10 @@ function generate(name) {
  }
  var name = NAMELIST.substring(ran1, ran1+1) + NAMELIST.substring(ran2, ran2+1);
  $( "#name-list" ).after( '<div class="name-result">'+ name + 
-    // '<a class="search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>' +
-    '<a class="search-button" target="_blank" href="https://www.google.com/search?query='+ name +'">Google 検索</a>' +
-    '<a class="search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
-    '<a class="search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
+    // '<a class="btn btn-secondary btn-sm search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>' +
+    '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +'">Google 検索</a>' +
+    '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
+    '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
     "</div>" );
 }
 
