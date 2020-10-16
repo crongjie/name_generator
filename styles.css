@@ -1,0 +1,23 @@
+.rng-text-size {
+    font-size: 20px;
+}
+
+.search-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 10px;
+  }
+
+.name-result {
+    margin: 10px;
+}
+
+.copy_alert {
+    display: none;
+  }
