@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <script>
+    var NAMELIST = "信健建博広輝元源機基本樹智知偉新才財富理論真尊誠明朗成睦和貴作創昇登思考豊領聰学研澤巧匠愉悦怡至証正天秀優祥希志幸中宇華嘉家達泰慧耀康哲悠慶慎啓永賢勝賀唯";
+    function getRandomInt(max) {
+       return Math.floor(Math.random() * Math.floor(max));
+    }
+    function generate(name) {
+     var nl_length = NAMELIST.length;
+     var ran1 = getRandomInt(nl_length);
+     var ran2 = getRandomInt(nl_length);
+     while (ran1 == ran2) {
+          ran1 = getRandomInt(nl_length);
+          ran2 = getRandomInt(nl_length);
+     }
+     var name = NAMELIST.substring(ran1, ran1+1) + NAMELIST.substring(ran2, ran2+1);
+     $( "#name-list" ).after( "<div>"+ name + "</div>" );
+    }
+    </script>
+    <style>
+    
+    </style>
+  </head>
+  <body>
+    <button onclick="generate()">生成する</button>
+    <div id="name-list"></div>
+  </body>
+</html>
+
+
