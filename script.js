@@ -44,10 +44,10 @@ function generate(name) {
 
      $( "#name-list" ).after( '<div class="name-result">'+ name + 
      // '<a class="btn btn-secondary btn-sm search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google 検索</a>' +
+     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
      '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
      '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
-     '<button class="btn btn-danger btn-sm search-button" onclick="addToFavorite(\''+name+'\')">お気に入り</button>' +
+     '<button class="btn btn-danger btn-sm search-button" onclick="addToFavorite(\''+name+'\')">★</button>' +
      "</div>" );
 }
 
@@ -87,7 +87,7 @@ function renderFavList() {
      for (let i = 0; i < fav_list.length; ++i) {
           var name = fav_list[i];
           $( "#fav-list" ).after( '<div class="name-result">'+ name + 
-          '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google 検索</a>' +
+          '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
           '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
           '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
           '<button class="btn btn-danger btn-sm search-button" onclick="removeFromFavorite(\''+name+'\')">削除</button>' +
