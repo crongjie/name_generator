@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache">
-    <title>名前生成</title>
+    <title>お気に入り名前</title>
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -15,20 +15,15 @@
   </head>
   <body>
     <nav aria-label="">
-      <ul class="pagination">
-        <li class="page-item"><a class="page-link" style="color:black;" href="#"><b>名前生成</b></a></li>
-        <li class="page-item"><a class="page-link" href="favorite.html">お気に入り</a></li>
-      </ul>
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="index.html">名前生成</a></li>
+          <li class="page-item"><a class="page-link" style="color:black;" href="#"><b>お気に入り</b></a></li>
+        </ul>
     </nav>
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="check_water" checked>
-      <label class="form-check-label" for="check_water">名前に"水"含める</label>
-    </div>
-    <br />
-    <button class="btn btn-primary btn-lg" onclick="generate()">生成する</button> 
-    <br /><br />
-    <!--<p id="js-copyalert" class="copy_alert">コピーしました</p>-->
-    <div class="rng-text-size" id="name-list"></div>
+    <div class="rng-text-size" id="fav-list"></div>
+    <script>
+        renderFavList();
+    </script>
   </body>
 </html>
 
