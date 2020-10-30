@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Cache-Control" content="no-cache">
-    <title>お気に入り名前</title>
+    <title>ツール</title>
     <script
   src="https://code.jquery.com/jquery-3.5.1.js"
   integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -17,13 +17,20 @@
     <nav aria-label="">
         <ul class="pagination">
           <li class="page-item"><a class="page-link" href="index.html">名前生成</a></li>
-          <li class="page-item"><a class="page-link" style="color:black;" href="#"><b>お気に入り</b></a></li>
-          <li class="page-item"><a class="page-link" href="tools.html">ツール</a></li>
+          <li class="page-item"><a class="page-link" href="favorite.html">お気に入り</a></li>
+          <li class="page-item"><a class="page-link" style="color:black;" href="#" href="tools.html"><b>ツール</b></a></li>
         </ul>
     </nav>
-    <div class="rng-text-size" id="fav-list"></div>
+    <div class="input-group flex-nowrap">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="input-name-wrapping">名前入力</span>
+      </div>
+      <input type="text" id="input-name" class="form-control" aria-label="name" aria-describedby="input-name-wrapping">
+    </div>
+    <br />
+    <div id="tool-field"></div>
     <script>
-        renderFavList();
+        init_tools();
     </script>
   </body>
 </html>

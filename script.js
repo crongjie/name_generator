@@ -44,9 +44,7 @@ function generate(name) {
 
      $( "#name-list" ).after( '<div class="name-result">'+ name + 
      // '<a class="btn btn-secondary btn-sm search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
+     getBtnHtml(name) +
      '<button class="btn btn-danger btn-sm search-button" onclick="addToFavorite(\''+name+'\')">★</button>' +
      "</div>" );
 }
@@ -62,7 +60,7 @@ function copyText(text) {
      $('#js-copyalert').show().delay(2000).fadeOut(400);
 }
 
-var fav_list = sessionStorage.getItem('fav_list');
+var fav_list = localStorage.getItem('fav_list');
 if (fav_list) {
      fav_list = JSON.parse(fav_list);
 } else {
@@ -72,14 +70,21 @@ if (fav_list) {
 function addToFavorite(name) {
      if (!fav_list.includes(name)) {
           fav_list.unshift(name);
-          sessionStorage.setItem('fav_list', JSON.stringify(fav_list));
+          localStorage.setItem('fav_list', JSON.stringify(fav_list));
      }
 }
 
 function removeFromFavorite(name) {
      fav_list = fav_list.filter(function(x){return x != name;});
-     sessionStorage.setItem('fav_list', JSON.stringify(fav_list));
+     localStorage.setItem('fav_list', JSON.stringify(fav_list));
      location.reload();
+}
+
+function getBtnHtml(name) {
+     return '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
+     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方</a>' +
+     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">運勢(宮坂)</a>' +
+     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=陳&mei='+ name +'">運勢(陳)</a>';
 }
 
 function renderFavList() {
@@ -87,10 +92,26 @@ function renderFavList() {
      for (let i = 0; i < fav_list.length; ++i) {
           var name = fav_list[i];
           $( "#fav-list" ).after( '<div class="name-result">'+ name + 
-          '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
-          '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方分析</a>' +
-          '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">名前判断</a>' +
+          getBtnHtml(name) +
           '<button class="btn btn-danger btn-sm search-button" onclick="removeFromFavorite(\''+name+'\')">削除</button>' +
           "</div>" );
      }
+}
+
+function init_tools() {
+     $('#input-name').change(function() {
+          var name = $(this).val();
+          if (name == '') {
+               $('#tool-field').html(
+                    "<p>名前入力してください</p>"
+               );
+          } else {
+               $('#tool-field').html(
+                    "<p><b>名前：</b>"+name+"</p>" + 
+                    getBtnHtml(name) +
+                    '<button class="btn btn-danger btn-sm search-button" onclick="addToFavorite(\''+name+'\')">★</button>'
+               );
+          }
+
+     });
 }
