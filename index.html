@@ -21,15 +21,23 @@
         <li class="page-item"><a class="page-link" href="tools.html">ツール</a></li>
       </ul>
     </nav>
-    <div class="form-check">
+    <p>
+      <input type="radio" name="gender" value="boy">男の子
+      <input type="radio" name="gender" value="girl" checked="checked">女の子
+    </p>
+    <div id="water-text" class="form-check">
       <input class="form-check-input" type="checkbox" id="check_water" checked>
       <label class="form-check-label" for="check_water">名前に"水"含める</label>
     </div>
     <br />
     <button class="btn btn-primary btn-lg" onclick="generate()">生成する</button> 
     <br /><br />
-    <!--<p id="js-copyalert" class="copy_alert">コピーしました</p>-->
     <div class="rng-text-size" id="name-list"></div>
+    <p id="js-copyalert" class="copy_alert">コピーしました</p>
+    <div id="copy-div" ></div>
+    <script>
+      init_index();
+    </script>
   </body>
 </html>
 
