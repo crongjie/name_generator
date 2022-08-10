@@ -1,0 +1,33 @@
+*{ box-sizing: border-box }
+
+.rng-text-size {
+    font-size: 20px;
+}
+
+body {
+  padding: 20px;
+}
+
+.search-button-bak {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 10px;
+  }
+
+  .search-button {
+    margin-left: 5px;
+  }
+
+.name-result {
+    margin: 5px;
+}
+
+.copy_alert {
+    display: none;
+  }

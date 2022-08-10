@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <title>ツール</title>
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js?v=9"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel=stylesheet type="text/css" href="styles.css">
+  </head>
+  <body>
+    <nav aria-label="">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="index.html">名前生成</a></li>
+          <li class="page-item"><a class="page-link" href="favorite.html">お気に入り</a></li>
+          <li class="page-item"><a class="page-link" style="color:black;" href="#" href="tools.html"><b>ツール</b></a></li>
+        </ul>
+    </nav>
+    <div class="input-group flex-nowrap">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="input-name-wrapping">名前入力</span>
+      </div>
+      <input type="text" id="input-name" class="form-control" aria-label="name" aria-describedby="input-name-wrapping">
+    </div>
+    <br />
+    <div id="tool-field"></div>
+    <script>
+        init_tools();
+    </script>
+  </body>
+</html>
