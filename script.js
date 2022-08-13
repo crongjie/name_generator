@@ -2,7 +2,11 @@ var BOY_NAMELIST_NORMAL = "信健建博広輝元機基本樹智知偉新才財�
 var BOY_NAMELIST_MIZU = "澤洋海济泰永源深準漢滙溫潇澳濟瀚瀛港鴻康浩澔淵渡治清";
 var BOY_NAMELIST = BOY_NAMELIST_NORMAL + BOY_NAMELIST_MIZU;
 
-var GIRL_NAMELIST = '愛莉心中日英美子詩海遥鈴玲麗雅絆時理科静香真音琴言睦智知思仁姫瑞碧和祐瞳慈礼芽夕史久星律舞珊光尋柚夢百楽悦怡伊怜寿天秀澪晴泉初翼翠古茜優希望志幸珠柔絵詠季華慧唯実清純帆凛凪安杏奈央月風澄空春夏秋冬雪雨朝夜千明響暁織雫彩未来萌原玉見貴観世代良早佳烈紀弓自由羽裕結果恵若環';
+var GIRL_FIRST_NAMELIST = '詩遥麗雅絆静真睦智知思仁祐瞳慈礼律光千百寿天秀澪初清朝雫玉若環';
+var GIRL_SECOND_NAMELIST = '珊実央代乃';
+var GIRL_SECOND_USUAL = '美子';
+var GIRL_BOTH_NAMELIST = '愛莉心日英美子海鈴玲時理科香音琴言瑞和芽夕久星舞尋柚夢怜晴泉翼翠古茜優希望志幸珠柔絵詠季華慧唯帆凛凪安杏奈月風澄空春夏秋冬雪雨夜明響織暁彩未来萌見貴世良早佳紀弓由羽裕結果恵友琳';
+
 var selected_gender = 'girl';
 
 
@@ -48,13 +52,17 @@ function generate(name) {
                name = BOY_NAMELIST.substring(ran1, ran1+1) + BOY_NAMELIST.substring(ran2, ran2+1);
           }
      } else {
-          var nl_length = GIRL_NAMELIST.length;
-          var ran1 = getRandomInt(nl_length);
-          var ran2 = getRandomInt(nl_length);
-          while (ran1 == ran2) {
-               ran2 = getRandomInt(nl_length);
-          }
-          name = GIRL_NAMELIST.substring(ran1, ran1+1) + GIRL_NAMELIST.substring(ran2, ran2+1);
+          var first_char_list = GIRL_FIRST_NAMELIST + GIRL_BOTH_NAMELIST;
+          var second_char_list = GIRL_SECOND_NAMELIST + GIRL_BOTH_NAMELIST + GIRL_SECOND_USUAL;
+          var first_char = '';
+          var second_char = '';
+          do {
+               var ran1 = getRandomInt(first_char_list.length);
+               var ran2 = getRandomInt(second_char_list.length);
+               first_char = first_char_list.substring(ran1, ran1+1);
+               second_char = second_char_list.substring(ran2, ran2+1);
+          } while (first_char == second_char);
+          name = first_char + second_char;
      }
 
      $( "#name-list" ).after( '<div class="name-result">'+ name + 
