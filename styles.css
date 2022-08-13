@@ -31,3 +31,11 @@ body {
 .copy_alert {
     display: none;
   }
+
+.checkbox-list {
+  display: flex;
+}
+
+.checkbox-list div {
+  padding-right: 10px;
+}

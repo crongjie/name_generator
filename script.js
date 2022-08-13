@@ -9,6 +9,21 @@ var GIRL_BOTH_NAMELIST = '愛莉心日英美子海鈴玲時理科香音琴言瑞
 
 var selected_gender = 'girl';
 
+function getBoolStorageItem(key, defValue) {
+     var result = localStorage.getItem(key);
+     if (result == null) {
+        return defValue;
+     } else {
+        return result == 'true';
+     }
+}
+
+var show_google = getBoolStorageItem('show_google', true);
+var show_read = getBoolStorageItem('show_read', true);
+var show_luck = getBoolStorageItem('show_luck', true);
+var show_ref = getBoolStorageItem('show_ref', true);
+var show_copy = getBoolStorageItem('show_copy', true);
+
 
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
@@ -103,11 +118,16 @@ function removeFromFavorite(name) {
 }
 
 function getBtnHtml(name) {
-     return '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">運勢(宮坂)</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=陳&mei='+ name +'">運勢(陳)</a>' +
-     '<a class="btn btn-secondary btn-sm search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>';
+     var gender_index = (selected_gender == 'boy') ? 1 : 2;
+     var first_char = name.substring(0,1);
+     var second_char = name.substring(1,2);
+     return ((show_google) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' : '') +
+     ((show_read) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方</a>' : '') +
+     ((show_luck) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">運勢(宮坂)</a>' : '') +
+     ((show_luck) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=陳&mei='+ name +'">運勢(陳)</a>' : '') +
+     ((show_ref) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://namehintbox.com/kanji.php?k='+ first_char +'&s='+gender_index+'#tabPos">『'+ first_char +'』を使った名前</a>' : '') +
+     ((show_ref) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://namehintbox.com/kanji.php?k='+ second_char +'&s='+gender_index+'#tabPos">『'+ second_char +'』を使った名前</a>' : '') +
+     ((show_copy) ? '<a class="btn btn-secondary btn-sm search-button" href="#" onclick="copyText(' + "'" + name +"'"+ ')">コピー</a>' : '');
 }
 
 function renderFavList() {
@@ -150,5 +170,33 @@ function init_index() {
                $("#water-text").hide();
           }
           selected_gender = val;
-      });  
+      });
+      console.log('show_google');
+      console.log(show_google);
+     $('#show_google').prop('checked', show_google);
+     $('#show_read').prop('checked', show_read);
+     $('#show_luck').prop('checked', show_luck);
+     $('#show_ref').prop('checked', show_ref);
+     $('#show_copy').prop('checked', show_copy);
+
+     $('#show_google').change(function() {
+          show_google = $('#show_google').is(":checked");
+          localStorage.setItem('show_google', show_google);
+     });
+     $('#show_read').change(function() {
+          show_read = $('#show_read').is(":checked");
+          localStorage.setItem('show_read', show_read);
+     });
+     $('#show_luck').change(function() {
+          show_luck = $('#show_luck').is(":checked");
+          localStorage.setItem('show_luck', show_luck);
+     });
+     $('#show_ref').change(function() {
+          show_google = $('#show_ref').is(":checked");
+          localStorage.setItem('show_ref', show_ref);
+     });
+     $('#show_copy').change(function() {
+          show_copy = $('#show_copy').is(":checked");
+          localStorage.setItem('show_copy', show_copy);
+     });
 }
