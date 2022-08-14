@@ -131,7 +131,7 @@ function getBtnHtml(name) {
      var first_char = name.substring(0,1);
      var second_char = name.substring(1,2);
      return ((show_google) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://www.google.com/search?query='+ name +' 名前">Google</a>' : '') +
-     ((show_read) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://name.sijisuru.com/Pname/pdetail?pname='+ name +'">読み方</a>' : '') +
+     ((show_read) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://namehintbox.com/namedata.php?n='+ name +'">読み方</a>' : '') +
      ((show_luck) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=宮坂&mei='+ name +'">運勢(宮坂)</a>' : '') +
      ((show_luck) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://seimeiuranai.jp/seimei.php?sei=陳&mei='+ name +'">運勢(陳)</a>' : '') +
      ((show_ref) ? '<a class="btn btn-secondary btn-sm search-button" target="_blank" href="https://namehintbox.com/kanji.php?k='+ first_char +'&s='+gender_index+'#tabPos">『'+ first_char +'』を使った名前</a>' : '') +
