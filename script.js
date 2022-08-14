@@ -5,7 +5,7 @@ var BOY_NAMELIST = BOY_NAMELIST_NORMAL + BOY_NAMELIST_MIZU;
 var GIRL_FIRST_NAMELIST = '詩遥麗雅絆静真睦智知思仁祐瞳慈礼律光千百寿天秀澪初清朝雫玉若環';
 var GIRL_SECOND_NAMELIST = '珊実央代乃';
 var GIRL_SECOND_USUAL = '美子';
-var GIRL_BOTH_NAMELIST = '愛莉心日英美子海鈴玲時理科香音琴言瑞和芽夕久星舞尋柚夢怜晴泉翼翠古茜優希望志幸珠柔絵詠季華慧唯帆凛凪安杏奈月風澄空春夏秋冬雪雨夜明響織暁彩未来萌見貴世良早佳紀弓由羽裕結果恵友琳';
+var GIRL_BOTH_NAMELIST = '愛莉心日英美子海鈴玲時理科香音琴言瑞和芽夕久星舞尋柚夢怜晴泉翼翠古茜優希望志幸珠柔絵詠季華慧唯帆凛凪安杏奈月風澄空春夏秋冬雪雨夜明響織暁彩未来萌見貴世良早佳紀弓由羽裕結果恵友琳素';
 
 var selected_gender = 'girl';
 
@@ -15,6 +15,15 @@ function getBoolStorageItem(key, defValue) {
         return defValue;
      } else {
         return result == 'true';
+     }
+}
+
+function getStorageItem(key, defValue) {
+     var result = localStorage.getItem(key);
+     if (result == null) {
+        return defValue;
+     } else {
+        return result;
      }
 }
 
@@ -28,7 +37,7 @@ var show_copy = getBoolStorageItem('show_copy', true);
 function getRandomInt(max) {
    return Math.floor(Math.random() * Math.floor(max));
 }
-function generate(name) {
+function generate() {
      var name = '';
      if (selected_gender == 'boy') {
           if ($('#check_water').is(":checked")) {
@@ -159,20 +168,8 @@ function init_tools() {
      });
 }
 
-function init_index() {
-     $("#water-text").hide();
-     $('input[name="gender"]').change(function () {
-          var val = $(this).val();
-          // Show and hide "名前に"水"含める" checkbox
-          if (val == 'boy') {
-               $("#water-text").show();
-          } else {
-               $("#water-text").hide();
-          }
-          selected_gender = val;
-      });
-      console.log('show_google');
-      console.log(show_google);
+function init_display() {
+
      $('#show_google').prop('checked', show_google);
      $('#show_read').prop('checked', show_read);
      $('#show_luck').prop('checked', show_luck);
@@ -192,11 +189,79 @@ function init_index() {
           localStorage.setItem('show_luck', show_luck);
      });
      $('#show_ref').change(function() {
-          show_google = $('#show_ref').is(":checked");
+          show_ref = $('#show_ref').is(":checked");
           localStorage.setItem('show_ref', show_ref);
      });
      $('#show_copy').change(function() {
           show_copy = $('#show_copy').is(":checked");
           localStorage.setItem('show_copy', show_copy);
      });
+}
+
+function init_index() {
+     $("#water-text").hide();
+     $('input[name="gender"]').change(function () {
+          var val = $(this).val();
+          // Show and hide "名前に"水"含める" checkbox
+          if (val == 'boy') {
+               $("#water-text").show();
+          } else {
+               $("#water-text").hide();
+          }
+          selected_gender = val;
+      });
+      init_display();
+}
+
+// 画数別---------------------
+var CHAR_LIST = [
+     '一乙',
+     '二乃',
+     '弓女子久万夕千',
+     '天文王心仁月円巴友日',
+     '世由未永礼冬白氷代玉',
+     '帆衣羽光百凪汐早江名',
+     '那花希佑里沙杏良秀玖初妙利沢芳',
+     '奈和空実佳幸明芽知茉朋英京雨夜苗欣',
+     '美咲音香海祐柚春星玲紀泉虹風律茜秋珊',
+     '真莉夏紗華桜恵珠栞倖祥時',
+     '理菜悠梨彩唯萌雪清',
+     '結遥貴智葉絵暁晶詠惠',
+     '愛聖睦新慈夢詩鈴',
+     '綾緒静鳳',
+     '穂凜舞慧澄',
+     '曉燕',
+     '優翼霜薰',
+     '織雛',
+     '麗蘭霧'
+];
+
+function init_by_number() {
+     init_display();
+     $("#char1number").val(getStorageItem('char1number', '1'));
+     $("#char2number").val(getStorageItem('char2number', '1'));
+
+     $('#char1number').change(function() {
+          localStorage.setItem('char1number', $("#char1number").val());
+     });
+     $('#char2number').change(function() {
+          localStorage.setItem('char2number', $("#char2number").val());
+     });
+}
+
+function generate_by_number() {
+     var name = '';
+     var first_char_list = CHAR_LIST[parseInt($("#char1number").val()) - 1];
+     var second_char_list = CHAR_LIST[parseInt($("#char2number").val()) - 1];
+     do {
+          var ran1 = getRandomInt(first_char_list.length);
+          var ran2 = getRandomInt(second_char_list.length);
+          first_char = first_char_list.substring(ran1, ran1+1);
+          second_char = second_char_list.substring(ran2, ran2+1);
+     } while (first_char == second_char);
+     name = first_char + second_char;
+     $( "#name-list" ).after( '<div class="name-result">'+ name + 
+     getBtnHtml(name) +
+     '<button class="btn btn-danger btn-sm search-button" onclick="addToFavorite(\''+name+'\')">★</button>' +
+     "</div>" );
 }
